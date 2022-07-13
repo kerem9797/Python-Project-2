@@ -1,0 +1,49 @@
+
+# Application that calculates an employee's weekly salary
+size=int(input("How many employee's would you like to enter: "))
+while size > 0:
+  size-=1
+  name=input("Enter your name: ")
+  surname=input("Enter your surname: ")
+  hourlyFee=int(input("Enter your hourly fee: "))
+  totalWork=int(input("How many hours did you work during the week: "))
+
+# This part calculates the weekly salary
+  if(totalWork>=8) and (totalWork<=16):
+       salary=(hourlyFee-(hourlyFee*(30/100)))*totalWork
+       print(f'{name} {surname} your weekly salary is {salary} $')
+  elif(totalWork>16)and(totalWork<=24):
+     salary=(hourlyFee-(hourlyFee*(20/100)))*totalWork    
+     print(f'{name} {surname} your weekly salary is {salary} $')
+  elif(totalWork>24)and(totalWork<=32):
+     salary=(hourlyFee-(hourlyFee*(10/100)))*totalWork    
+     print(f'{name} {surname} your weekly salary is {salary} $')   
+  elif(totalWork>32)and(totalWork<=40):
+    salary=hourlyFee*totalWork   
+    print(f'{name} {surname} your weekly salary is {salary} $')
+  else:
+    print("You cannot work less than 8 hours and more than 40 hours on weekdays")
+    
+# This part calculates if the employee works on the weekend
+  workWeekend=int(input("Did you work on the weekend (yes=1,no=0): "))
+  if(workWeekend==1):
+      totalWork2=int(input("How much time did you work on the weekend: "))
+      if(totalWork2>=4)and(totalWork2<=12):
+        salary2=(hourlyFee+(hourlyFee*(20/100)))*totalWork2
+        print(f'{name} {surname} your weekly salary is {salary+salary2} $ ')
+      elif(totalWork2>12):
+        salary2=(hourlyFee+(hourlyFee*(20/100)))*12
+        print(f'{name} {surname} your weekly salary is {salary+salary2} $ ')
+      else:
+        print("You cannot work less than 4 hours and more than 12 hours on weekends")         
+  elif(workWeekend==0):
+     print("Not calculated because you didn't work on the weekend")
+  else:
+   print("Please enter a valid value")
+    
+# This part calculates extra bonus
+  if(totalWork==40)and(totalWork2>=12):
+    salary3=(hourlyFee*5)
+    print("Congratulations you've earned an extra bonus")
+    print(f'{name} {surname} your weekly salary with extra bonus is {salary+salary2+salary3} $')
+
